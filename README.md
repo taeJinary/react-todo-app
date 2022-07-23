@@ -1,2 +1,1 @@
-# react-todo-app
-learning react v18
+# react를 배우면서 todolist를 만들어 봅니다
