@@ -2,16 +2,6 @@ import React from 'react'
 
 export default function List( {todoData,setTodoData}) { /* props 가져오기 */
 
-
-    const btnStyle = {
-        color: "#fff",
-        border: "none",
-        padding: "5px 9px",
-        borderRadius: "50%",
-        cursor: "pointer",
-        float: "right",
-      };
-
       const handleCompleteChange =  (id) => {
         let newTodoData = todoData.map(data => {
           if(data.id === id) {
@@ -29,27 +19,24 @@ export default function List( {todoData,setTodoData}) { /* props 가져오기 */
          console.log('newTodoData', newTodoData)
          setTodoData(newTodoData)
          };
-
-      const getStyle = (completed) => { //할일 목록에 줄 긋는 함수 => 동적으로 처리해야 하기 때문에 함수로 작성함
-        return {
-          padding : "10px",
-          borderBottom : "1px #ccc dotted",
-          textDecoration : completed ? "line-through" : "none",
-        };
-      }
     
   return (
     <div>
         {todoData.map((data) => ( //react에서는 리스트 여러개를 나열할때는 key를 넣어줘야 한다
         //key 속성에는 객체의 구별할 수 있는 유니크한 값을 넣어주면 된다  
-          <div style={getStyle(data.compeleted)} key={data.id}>
-          <p>
-          <input type="checkbox" defalutChecked={data.compeleted} onChange={() => handleCompleteChange(data.id)}
+          <div key={data.id}>
+          <div className="flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 bg-gray-100 border rounded ">
+          <div className="item-center">
+          <input type="checkbox" 
+          defalutChecked={data.compeleted} 
+          onChange={() => handleCompleteChange(data.id)}
           /> {" "}
+          <span className={data.completed ? "line-through" : undefined}>{data.title}</span>
 
-        {data.title}
-          <button style={btnStyle} onClick={() => handleClick(data.id)}/*클릭하면 삭제되는 함수 */>x</button>
-       </p>
+          </div>
+          <button className="px-4 py-2 float-right" onClick={() => handleClick(data.id)}
+/*클릭하면 삭제되는 함수 */>x</button>
+       </div>
     </div>
   ))}
   </div>

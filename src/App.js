@@ -24,10 +24,9 @@ export default function App() { //함수형 컴포넌트 선언
   };
 
     return( //JSX에서 html 클래스태그를 작성할때는 className이라 작성한다
-      
-      <div className="container"> 
-        <div className="todoBlock">
-          <div className="title">
+      <div className="flex items-center justify-center w-screen h-screen bg-blue-100"> 
+        <div className="w-full p-5 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg">
+          <div className="flex justify between mb-3">
             <h1>할 일 목록</h1>
           </div>
           <List todoData={todoData} setTodoData={setTodoData}/>
